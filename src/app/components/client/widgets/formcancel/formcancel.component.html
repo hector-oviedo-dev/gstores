@@ -1,0 +1,25 @@
+<div class="row" style="nopadding" [hidden]="!FINISHED">
+  <h3 class="col-xs-12" style="text-align:center;">{{title}}</h3>
+  <label class="col-xs-12" style="text-align:center;">{{body}}</label>
+</div>
+<form class="form-horizontal" [formGroup]="complexForm" [hidden]="FINISHED">
+  <fieldset>
+    <h3 class="col-xs-12">Motivo:</h3>
+    <div class="col-xs-12 has-warning">
+      <fieldset>
+        <h4><input type="radio" name="motivo" formControlName="motivo" value="1">El Partner no responde</h4>
+        <h4><input type="radio" name="motivo" formControlName="motivo" value="2">La demora no es la acordada</h4>
+        <h4><input type="radio" name="motivo" formControlName="motivo" value="3">Realize el tramite por mi cuenta</h4>
+        <h4><input type="radio" name="motivo" formControlName="motivo" value="4">Me arrepenti de hacer el tramite</h4>
+        <h4><input type="radio" name="motivo" formControlName="motivo" value="5">Otro</h4>
+      </fieldset>
+    </div>
+    <div>
+      <textarea class="form-control" rows="4" formControlName="desc"></textarea>
+      <span class="help-block">Especificar el motivo de cancelacion.</span>
+    </div>
+    <div class="col-xs-12 nopadding">
+      <button type="submit" class="btn btn-danger" (click)="onClick()" [disabled]="!complexForm.valid">Cancelar Tramite</button>
+    </div>
+  </fieldset>
+</form>

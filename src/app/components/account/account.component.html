@@ -1,0 +1,86 @@
+<!-- Modal -->
+<modal #popupModal (onClose)="onModalClick()">
+    <modal-header>
+        <h1>{{MODAL_POPUP.title}}</h1>
+    </modal-header>
+    <modal-content>
+      <div>{{MODAL_POPUP.body}}</div>
+      <app-addaddress [hidden]="formAddAddressHide"></app-addaddress>
+    </modal-content>
+    <modal-footer>
+        <div class="col-xs-12 nopadding pull-right"><button class="btn btn-warning" (click)="onModalClick()">{{MODAL_POPUP.btn}}</button></div>
+    </modal-footer>
+</modal>
+
+<!-- Header + Web Menu (hidden in mobile mode) -->
+<app-header></app-header>
+<!-- Title -->
+<div class="row bodyimg nopadding">
+  <div class="visible-xs-block visible-sm-block hidden-md-block hidden-lg-block nopadding">
+    <br><br><br><br><br>
+    <h4 class="col-sm-12 mobileTitle"><b>{{titletype}} - MI CUENTA</b></h4>
+    <br>
+  </div>
+  <div class="hidden-xs-block hidden-sm-block visible-md-block visible-lg-block nopadding">
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-md-offset-2">
+      <h2 class="well" style="text-align:center"><b>MI CUENTA</b></h2>
+    </div>
+  </div>
+<br>
+<br>
+</div>
+
+<!-- Mobile Nav -->
+<div class="visible-xs-block visible-sm-block hidden-md-block hidden-lg-block nopadding">
+
+  <ul class="nav nav-stacked">
+    <table class="table table-striped table-hover">
+    <thead>
+      <tr><th><a class="btn btn-warning" routerLink="/home" style="text-align:center;width:100%"><h5>VOLVER</h5></a></th></tr>
+    </thead>
+  </table>
+  </ul>
+
+</div>
+<!-- Body -->
+
+<div class="col-sm-12 col-md-8 col-md-offset-2 jumbotron jumbotronForm">
+
+<form class="form-horizontal">
+  <fieldset>
+
+    <h4 class="col-xs-12" style="color:white"><b>Administrar Mis Domicilios</b></h4>
+    <br><ul class="nav nav-tabs span2 clearfix"></ul><br>
+
+  <div class="col-xs-12 form-group nopadding">
+
+  <div  *ngFor="let address of addresses">
+    <div class="col-xs-11 nopadding" style="padding:0px 5px 10px 0px !important;">
+      <input type="text" class="form-control form-control-warning nopadding" style="display:table-cell;width:100%;height:40px;" value={{address.name}} disabled>
+    </div>
+    <div class="col-xs-1 nopadding">
+      <a class="btn btn-danger nopadding pullright" style="width:100%;height:40px;" (click)="onClick(address.id);"><h6>X</h6></a>
+    </div>
+  </div>
+
+</div>
+
+  <div class="col-xs-12 form-group has-warning">
+      <button class="btn btn-warning" (click)="openAddAddress()">AGREGAR DOMICILIO</button>
+  </div>
+  </fieldset>
+</form>
+
+</div>
+
+
+<br>
+<br>
+<br>
+
+<app-footer></app-footer>

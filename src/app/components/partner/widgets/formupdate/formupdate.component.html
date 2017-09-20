@@ -1,0 +1,29 @@
+<div class="row" style="nopadding" [hidden]="!FINISHED">
+  <h3 class="col-xs-12" style="text-align:center;">{{title}}</h3>
+  <label class="col-xs-12" style="text-align:center;">{{body}}</label>
+</div>
+<form class="form-horizontal" [formGroup]="complexForm" [hidden]="FINISHED">
+  <fieldset>
+    <legend><h4><b><i>Cambiar estado del tramite</i></b></h4></legend>
+    <div class="form-group">
+      <div class="col-xs-9 has-warning">
+        <select class="form-control" formControlName="seldrop" [formControl]="complexForm.controls['seldrop']">
+            <option [value]="0">NO INICIADO</option>
+            <option [value]="1">INICIADO</option>
+            <option [value]="2">EN PROCESO</option>
+            <option [value]="3">FINALIZADO</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div for="select" class="col-xs-12 control-label"><label class="pull-left">Detalles</label></div>
+      <div class="col-xs-12 has-warning">
+        <textarea class="form-control" rows="4" formControlName="desc"></textarea>
+        <span class="help-block">Detalles del estado del tramite.</span>
+      </div>
+    </div>
+    <div class="col-xs-12 nopadding">
+      <button type="submit" class="btn btn-danger" (click)="onClick()" [disabled]="!complexForm.valid">Actualizar Tramite</button>
+    </div>
+  </fieldset>
+</form>

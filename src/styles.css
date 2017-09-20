@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+[hidden] { display: none !important;}
+html {
+  width: auto !important;
+  overflow-x: hidden !important;
+}
+body {
+  overflow-x: hidden !important;
+  background-color: #675b57;
+}
+agm-map {
+      height: 300px;
+}
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+.divider {
+  height: 1px;
+  width:100%;
+  display:block; /* for use on default inline elements like span */
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+.navbar-nav {
+  float: none;
+  text-align: center;
+}
+
+.navbar-nav li {
+  float: none;
+  display: inline-block;
+}
+.bodyimg {
+  background-image: url("assets/images/gradient.jpg");
+  background-repeat: repeat-x;
+}
+.well {
+  background-color:rgba(99,99,99,0.9);
+  border-top: 1px solid darkgrey;
+  border-bottom: 1px solid #444;
+  border-left: 1px solid darkgrey;
+  border-right: 1px solid #444;
+
+  color:white;
+  text-shadow: 2px 2px #584f1e;
+}
+.wellBody {
+  background-color:rgba(255, 255, 255, 0.75);
+
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #007E33;
+
+}
+.mobileTitle {
+  text-align:center;
+  color:white;
+  //color:black;
+  background: rgba(88,88,88,0.8);
+  //background: rgba(220,194,46,0.4);
+  padding-top:15px;
+  padding-bottom:15px;
+  text-shadow: 2px 2px rgba(66,66,66,0.8);
+  //text-shadow: 2px 2px #584f1e;
+
+  //border-top: 2px solid #dcc22e;
+  //border-bottom: 2px solid #8c7c20;
+
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid #444;
+}
+.mobileButtons {
+  background:rgba(180,128,85,1);
+}
+
+.panel-warning {
+    border-color: #33231e !important;
+}
+.panel-warning > .panel-heading {
+    background: #33231e !important;
+    border-color: #33231e !important;
+}
+.btn-warning {
+    background: #33231e !important;
+    border-color: #33231e !important;
+}
+.jumbotronForm {
+  background: -webkit-linear-gradient(-45deg, rgba(140,140,140,0.9), rgba(0,0,0,0.9));
+  border-radius: 10px 10px 10px 10px;
+  padding:20px;
+}
+.tableBorder {
+  border-style: solid;
+
+  border-width: 2px;
+  border-color: #453d30;
+}

@@ -1,0 +1,253 @@
+<!-- Modal regist login -->
+<modal #registModal [(ngModel)]="MODAL_REGIST" ngDefaultControl (onClose)="onModalClick()">
+    <modal-header>
+        <h1>{{MODAL_REGIST.title}}</h1>
+    </modal-header>
+    <modal-content>
+      <div>{{MODAL_REGIST.body}}</div>
+    </modal-content>
+    <modal-footer>
+        <div class="col-xs-12 nopadding pull-right"><button class="btn btn-warning" (click)="onModalClick()">Aceptar</button></div>
+    </modal-footer>
+</modal>
+
+<!-- Header + Web Menu (hidden in mobile mode) -->
+<app-header></app-header>
+<!-- Title -->
+<div class="row bodyimg nopadding">
+  <div class="visible-xs-block visible-sm-block hidden-md-block hidden-lg-block nopadding">
+    <br><br><br><br><br>
+    <h4 class="col-sm-12 mobileTitle"><b>PARTNER - </b><i>Formulario de registro</i></h4>
+    <br>
+  </div>
+  <div class="hidden-xs-block hidden-sm-block visible-md-block visible-lg-block nopadding">
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-md-offset-2">
+      <h2 class="well" style="text-align:center"><b>PARTNER - </b><i>Formulario de registro</i></h2>
+    </div>
+  </div>
+<br>
+<br>
+</div>
+
+<!-- Mobile Nav -->
+<div class="visible-xs-block visible-sm-block hidden-md-block hidden-lg-block nopadding">
+
+  <ul class="nav nav-stacked">
+    <table class="table table-striped table-hover">
+    <thead>
+      <tr><th><a class="btn btn-warning" routerLink="/register" style="text-align:center;width:100%"><h5>VOLVER</h5></a></th></tr>
+    </thead>
+  </table>
+  </ul>
+
+</div>
+<!-- Body -->
+
+<div class="col-xs-12 col-md-8 col-md-offset-2  jumbotron jumbotronForm">
+<form class="form-horizontal" [formGroup]="complexForm">
+  <fieldset>
+
+    <!-- Nombre -->
+    <div class="form-group has-warning" [ngClass]="{'has-error':!complexForm.controls['name'].valid && complexForm.controls['name'].touched}">
+      <div class="col-xs-12 pull-right" style="width:100%;">
+        <label class="form-control-label" for="inputname" style="color:white">Nombre Apellido / Razon Social</label>
+        <input type="text" class="form-control form-control-warning" formControlName="name" [formControl]="complexForm.controls['name']" style="display:table-cell;width:100%;">
+        <div class="alert alert-danger" *ngIf="!complexForm.controls['name'].valid && complexForm.controls['name'].touched">Por favor ingresar un nombre valido.</div>
+      </div>
+    </div>
+
+    <!-- CUIT/CUIL -->
+    <div class="form-group has-warning" [ngClass]="{'has-error':!complexForm.controls['dni'].valid && complexForm.controls['dni'].touched}">
+      <div class="col-xs-12 pull-right" style="width:100%;">
+        <label class="form-control-label" for="inputdni" style="color:white">CUIT/CUIL (Sin guiones)</label>
+        <input type="text" class="form-control form-control-warning" formControlName="dni" [formControl]="complexForm.controls['dni']" style="display:table-cell;width:100%;">
+        <div class="alert alert-danger" *ngIf="!complexForm.controls['dni'].valid && complexForm.controls['dni'].touched">Por favor ingresar un DNI valido.</div>
+      </div>
+    </div>
+
+    <!-- E-mail -->
+    <div class="form-group has-warning" [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
+      <div class="col-xs-12 pull-right" style="width:100%;">
+        <label class="form-control-label" for="inputemail" style="color:white">E-Mail</label>
+        <input type="text" class="form-control form-control-warning" formControlName="email" [formControl]="complexForm.controls['email']" style="display:table-cell;width:100%;">
+        <div class="alert alert-danger" *ngIf="!complexForm.controls['email'].valid && complexForm.controls['email'].touched">Por favor ingrese un correo electronico valido.</div>
+      </div>
+    </div>
+
+    <br><ul class="nav nav-tabs span2 clearfix"></ul><br>
+
+    <!-- Domicilio -->
+    <div class="form-group">
+      <div class="has-warning">
+        <h3 class="form-control-label" for="inputaddress" style="color:white; text-align:center;">Domicilio</h3><br>
+        <div class="col-xs-12">
+          <div class="col-xs-10">
+            <input type="text" class="form-control" [ngClass]="{'has-error':!complexForm.controls['address_full'].valid && complexForm.controls['address_full'].touched}" formControlName="address_full" [formControl]="complexForm.controls['address_full']" placeholder="Ingrese aqui un domicilio valido">
+            <div class="alert alert-warning">*Verifique solo ingresar calle, altura, localidad/partido/barrio, provincia y pais.</div>
+            <div class="alert alert-danger" *ngIf="!complexForm.controls['address_full'].valid && complexForm.controls['address_full'].touched">Por favor ingrese un domicilio valido.</div><br>
+            <br>
+          </div>
+          <div class="col-xs-2">
+            <button class="btn btn-warning" (click)="onSearchClick()">Buscar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-10" style="width:100%;">
+        <input type="text" class="form-control" formControlName="address_street" [formControl]="complexForm.controls['address_street']" placeholder="Calle" disabled><br>
+
+        <input type="text" class="form-control" formControlName="address_number" [formControl]="complexForm.controls['address_number']"  placeholder="Numero" disabled><br>
+
+        <input type="text" class="form-control" formControlName="address_cp" [formControl]="complexForm.controls['address_cp']" placeholder="Codigo Postal" disabled><br>
+
+        <input type="text" class="form-control" formControlName="address_state" [formControl]="complexForm.controls['address_state']" placeholder="Provincia" disabled><br>
+
+        <input type="text" class="form-control" formControlName="address_city" [formControl]="complexForm.controls['address_city']" placeholder="Localidad" disabled><br>
+
+        <input type="text" class="form-control" formControlName="address_country" [formControl]="complexForm.controls['address_country']" placeholder="Pais" disabled><br>
+
+        <div class="col-xs-12 has-warning pull-right" style="width:100%;">
+          <input type="text" class="form-control" formControlName="address_floor" [formControl]="complexForm.controls['address_floor']" placeholder="Piso"><br>
+
+          <input type="text" class="form-control" formControlName="address_room" [formControl]="complexForm.controls['address_room']" placeholder="Departamento"><br>
+        </div>
+
+      </div>
+      <!-- Telefono -->
+      <div class="col-xs-12 has-warning pull-right" style="width:100%;">
+        <label class="form-control-label" for="inputphone" style="color:white">Telefono/Celular</label>
+        <input type="text" class="form-control form-control-warning" formControlName="address_phone" [formControl]="complexForm.controls['address_phone']" style="display:table-cell;width:100%;">
+        <div class="alert alert-danger" *ngIf="!complexForm.controls['address_phone'].valid && complexForm.controls['address_phone'].touched">Por favor ingrese un telefono valido.</div>
+      </div>
+      <!-- Nombre del Contacto -->
+      <div class="col-xs-12 has-warning pull-right" style="width:100%;">
+        <label class="form-control-label" for="contactname" style="color:white">Nombre de Contacto</label>
+        <input type="text" class="form-control form-control-warning" formControlName="address_contact" [formControl]="complexForm.controls['address_contact']" style="display:table-cell;width:100%;">
+        <div class="alert alert-danger" *ngIf="!complexForm.controls['address_contact'].valid && complexForm.controls['address_contact'].touched">Por favor ingrese un nombre de contacto valido.</div>
+      </div>
+    </div>
+
+    <!-- Cuenta Bancaria -->
+    <div>
+      <div class="col-xs-12 col-md-10" style="width:100%;">
+        <br><ul class="nav nav-tabs span2 clearfix"></ul>
+        <h3 for="textArea" class="col-xs-12 col-md-10 control-label" style="color:white;text-align:left;">Datos de cuenta bancaria</h3>
+        <!-- Num cuenta -->
+        <div class="form-group has-warning">
+          <div class="col-xs-12 pull-right" style="width:100%;">
+            <br>
+            <label class="form-control-label" for="accountnumber" style="color:white">Numero de cuenta</label>
+            <input type="text" class="form-control form-control-warning" formControlName="bank_number" [formControl]="complexForm.controls['bank_number']" style="display:table-cell;width:100%;">
+            <div class="alert alert-danger" *ngIf="!complexForm.controls['bank_number'].valid && complexForm.controls['bank_number'].touched">Por favor ingrese un numero de cuenta valido.</div>
+          </div>
+        </div>
+        <!-- Tipo de cuenta -->
+        <div class="form-group">
+          <label class="col-md-1 control-label" style="color:white">Tipo de cuenta</label>
+          <div class="col-md-11">
+            <div class="radio">
+              <label style="color:white">
+                <input type="radio" formControlName="bank_type" [formControl]="complexForm.controls['bank_type']" value="cc" checked="true">
+                Cuenta Corriente
+              </label>
+            </div>
+            <div class="radio">
+              <label style="color:white">
+                <input type="radio" formControlName="bank_type" [formControl]="complexForm.controls['bank_type']" value="ch">
+                Caja de ahorro
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- CBU -->
+        <div class="form-group has-warning">
+          <div class="col-xs-12 pull-right" style="width:100%;">
+            <label class="form-control-label" for="accountcbu" style="color:white">CBU</label>
+            <input type="text" class="form-control form-control-warning" formControlName="bank_cbu" [formControl]="complexForm.controls['bank_cbu']" style="display:table-cell;width:100%;">
+            <div class="alert alert-danger" *ngIf="!complexForm.controls['bank_cbu'].valid && complexForm.controls['bank_cbu'].touched">Por favor ingrese un CBU valido.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documentacion Requerida -->
+    <!-- <div class="form-group has-warning">
+      <div class="col-sm-12 pull-right" style="width:100%;">
+        <label class="form-control-label" for="doc" style="color:white">Envio de Documentacion Requerida</label>
+    </div>
+    </div> -->
+
+    <br><ul class="nav nav-tabs span2 clearfix"></ul><br>
+
+    <!-- Password -->
+    <div class="form-group has-warning">
+      <div class="col-xs-12 pull-right" style="width:100%;">
+        <label class="form-control-label" for="inputpass" style="color:white">Password (seis dígitos como mínimo)</label>
+        <input type="password" class="form-control form-control-warning" formControlName="password" [formControl]="complexForm.controls['password']" style="display:table-cell;width:100%;">
+      </div>
+    </div>
+    <div class="form-group has-warning">
+      <div class="col-xs-12 pull-right" style="width:100%;">
+        <label class="form-control-label" for="inputpass2" style="color:white">Repetir Password</label>
+        <input type="password" class="form-control form-control-warning" formControlName="confirmPassword" [formControl]="complexForm.controls['confirmPassword']" style="display:table-cell;width:100%;">
+        <div class="alert alert-danger" *ngIf="complexForm.controls.confirmPassword.errors?.MatchPassword">El password no concuerda.</div>
+      </div>
+    </div>
+
+    <br><ul class="nav nav-tabs span2 clearfix"></ul><br>
+
+    <!-- Terminos y Condiciones -->
+    <div class="form-group">
+      <div class= "col-xs-12 pull-right" style="width:100%;">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Terminos y condiciones</h3></div>
+          <div class="panel-body">
+            Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+          </div>
+        </div>
+        <div class="pull-right">
+          <div class="checkbox">
+            <label style="color:white"><input type="checkbox" formControlName="agree" [formControl]="complexForm.controls['agree']">Acepto los terminos y condiciones.</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br><ul class="nav nav-tabs span2 clearfix"></ul><br>
+
+    <div class="form-group has-warning">
+      <div class="col-xs-12 pull-right" style="width:100%;">
+        <label class="form-control-label" style="color:white">Una vez finalizado el registro recuerde validar su cuenta mediante el link enviado a su casilla de correo electronico.</label>
+      </div>
+    </div>
+
+    <div class="form-group nopadding">
+        <label class="alert-danger" *ngIf="!complexForm.controls['name'].valid">Por favor completar: Nombre Apellido / Razon Social.</label>
+        <label class="alert-danger" *ngIf="!complexForm.controls['dni'].valid">Por favor completar: CUIT/CUIL.</label>
+        <label class="alert-danger" *ngIf="!complexForm.controls['email'].valid">Por favor completar: E-Mail.</label>
+        <label class="alert-danger" *ngIf="!complexForm.controls['address_full'].valid">Por favor completar: Domicilio.</label>
+        <label class="alert-danger" *ngIf="!complexForm.controls['address_phone'].valid">Por favor completar: Telefono/Celular.</label>
+        <label class="alert-danger" *ngIf="!complexForm.controls['address_contact'].valid">Por favor completar: Nombre de Contacto.</label>
+        <label class="alert-danger" *ngIf="!complexForm.controls['address_contact'].valid">Por favor completar: Nombre de Contacto.</label>
+        <label class="alert-danger" *ngIf="complexForm.controls.confirmPassword.errors?.MatchPassword">Por favor verifique el password ingresado.</label>
+        <label class="alert-danger" *ngIf="!complexForm.controls['agree'].valid">Debe aceptar los terminos y condiciones.</label>
+
+        <button style="float:none;display:table-cell;vertical-align:bottom;" type="submit" class="btn btn-warning pull-right" (click)="onClick()" [disabled]="!complexForm.valid">Aceptar</button>
+    </div>
+
+  </fieldset>
+</form>
+
+</div>
+
+
+<br>
+<br>
+<br>
+</div>
+<app-footer></app-footer>

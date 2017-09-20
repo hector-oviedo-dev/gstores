@@ -1,0 +1,47 @@
+<label class="col-xs-12 control-label">Seleccione una de sus direcciones para la postulacion.</label>
+<div class="col-xs-12 nopadding">
+  <agm-map #mapInstance [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]=false>
+    <agm-marker *ngFor="let m of markers;let i = index"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [title]="m.name"
+      [iconUrl]="m.icon">
+    </agm-marker>
+
+    <agm-marker [latitude]="myposition.lat"
+      [longitude]="myposition.lng"
+      [title]="myposition.name"
+      [iconUrl]="myposition.icon">
+
+    </agm-marker>
+
+    <agm-circle *ngFor="let c of circles;let i = index"
+      [latitude]="c.lat"
+      [longitude]="c.lng"
+      [title]="c.name"
+      [radius]="c.rad"
+      [fillColor]="c.color">
+    </agm-circle>
+  </agm-map>
+
+</div>
+
+<div class="col-xs-12 nopadding">
+  <form class="form-horizontal nopadding" [formGroup]="complexForm">
+    <fieldset>
+
+      <div class="col-xs-12 nopadding" style="text-align:left;color:lightblue;"><h5><i><b>* La zona azul representa su ubicacion actual</b></i></h5></div>
+      <div class="col-xs-12 form-group nopadding">
+
+        <label class="control-label">Seleccione una de sus direcciones para postularse:</label>
+
+        <div class="col-xs-12 has-warning nopadding">
+          <select class="form-control" (change)="onChange($event.target.value,$event.target.options[$event.target.value].innerHTML)" formControlName="seldrop" [formControl]="complexForm.controls['seldrop']">
+            <option *ngFor="let address of markers;let i = index" [value]="address.id" [attr.selected]="i == 0">{{address.label}}</option>
+          </select>
+        </div>
+        <br>
+      </div>
+    </fieldset>
+  </form>
+</div>

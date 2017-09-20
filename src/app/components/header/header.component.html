@@ -1,0 +1,25 @@
+<!-- Title -->
+<div class="visible-xs-block visible-sm-block hidden-md-block hidden-lg-block imgStyle" style="position:absolute;">
+  <app-signed></app-signed>
+  <a routerLink="/home"><img class="img-responsive imgStyle" src="assets/images/logo_mobile.png"></a>
+</div>
+
+<!-- Desktop Nav -->
+
+<div class="hidden-xs-block hidden-sm-block visible-md-block visible-lg-block nopadding" style="background-color:white;">
+  <app-signed></app-signed>
+  <nav class="navbar nopadding">
+    <a routerLink="/home" class="navbar-brand nopadding" href="#"><img class="img-responsive nopadding" src="assets/images/logo.png"></a>
+    <div class="collapse navbar-collapse nopadding">
+      <ul class="nav navbar-nav nopadding">
+        <li><a style="color:#33231e" routerLink="/home" [hidden]="LOGGED"><h4><b>HOME</b></h4></a></li>
+        <li><a style="color:#33231e" routerLink="/login" [hidden]="LOGGED"><h4><b>INGRESAR</b></h4></a></li>
+        <li><a style="color:#33231e" routerLink="/register" [hidden]="LOGGED"><h4><b>REGISTRARSE</b></h4></a></li>
+        <li><a style="color:#33231e" routerLink="/account" [hidden]="!LOGGED"><h4><b>MI CUENTA</b></h4></a></li>
+        <li><a style="color:#33231e" routerLink="/home"  [hidden]="!LOGGED"><h4><b>PANEL DE CONTROL</b></h4></a></li>
+        <li><a style="color:#33231e" routerLink="/contact"><h4><b>CONTACTO</b></h4></a></li>
+      </ul>
+    </div>
+
+</nav>
+</div>

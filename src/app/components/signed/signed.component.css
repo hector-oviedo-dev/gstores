@@ -1,0 +1,10 @@
+.signed {
+  position:absolute;
+  right: 0;
+  margin-top: 9px;
+  margin-right: 2px;
+  padding: 5px;
+  z-index: 10;
+  background: -webkit-linear-gradient(-45deg, rgba(220,194,46,0.8), rgba(255,136,0,0.8));
+  border-radius: 3px 3px 3px 3px;
+}

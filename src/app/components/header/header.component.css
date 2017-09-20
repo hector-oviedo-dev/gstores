@@ -1,0 +1,9 @@
+a:hover { color: #333 !important; }
+.imgStyle {
+  max-height: 110px;
+  //max-width: 120px;
+  top: 15px;
+  left:0;
+  right:0;
+  margin:0 auto;
+}

@@ -1,0 +1,46 @@
+<div class="row" style="nopadding" [hidden]="!FINISHED">
+  <h3 class="col-xs-12" style="text-align:center;">{{title}}</h3>
+  <label class="col-xs-12" style="text-align:center;">{{body}}</label>
+</div>
+<form class="form-horizontal" [formGroup]="complexForm" [hidden]="FINISHED">
+  <fieldset>
+    <legend><h4><b><i>Calificar Tramite</i></b></h4></legend>
+    <div class="form-group">
+      <div for="select" class="col-xs-12 control-label"><label class="pull-left">El tramite fue finalizado correctamente?</label></div>
+      <div class="col-xs-12">
+        <div class="radio">
+          <label>
+            <input type="radio" formControlName="option" value="true" checked="">
+            Si
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" formControlName="option" value="false">
+            No
+          </label>
+        </div>
+      </div>
+      <div class="col-xs-12 has-warning">
+        <div for="select" class="col-xs-12 control-label"><label class="pull-left">Califica del 1 al 5 al cliente</label></div>
+        <select class="form-control" formControlName="score">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div for="select" class="col-xs-12 control-label"><label class="pull-left">Detalles</label></div>
+      <div class="col-xs-12 has-warning">
+        <textarea class="form-control" rows="4" formControlName="desc"></textarea>
+        <span class="help-block">Especificacion de la calificacion y su experiencia.</span>
+      </div>
+    </div>
+    <div class="col-xs-12 nopadding">
+      <button type="submit" class="btn btn-danger" (click)="onClick()" [disabled]="!complexForm.valid">Calificar Tramite</button>
+    </div>
+  </fieldset>
+</form>
