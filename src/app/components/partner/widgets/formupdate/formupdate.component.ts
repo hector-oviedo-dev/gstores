@@ -34,5 +34,7 @@ export class FormupdateComponent implements OnInit {
     this.title = "Motivo";
     this.body = "";
   }
-
+  public onClick() {
+    
+  }
 }

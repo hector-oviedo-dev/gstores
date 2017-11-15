@@ -34,6 +34,9 @@ export class ClientproceduresComponent implements OnInit {
   public prid:string;
   public UID:string;
 
+  //TODO revisar esto
+  public procedureID:string;
+
   public hasError:boolean = false;
 
   constructor(r:Router, private service:ProceduresService) {
